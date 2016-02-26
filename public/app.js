@@ -3,13 +3,13 @@ console.log("hello");
 
 
 var ProductTable = React.createClass({
-  getInitialState: function(){
+  getInitialState: function(){//initialize the state first, can declare anything
     return {
       products: []
     }
   },
 
-  loadProductsFromServer: function() {
+  loadProductsFromServer: function() { //getting data from server
     var self = this;
     $.ajax({
       url: this.props.url,
