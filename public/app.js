@@ -3,20 +3,20 @@ console.log("hello");
 
 
 var ProductTable = React.createClass({
-  getInitialState: function(){//initialize the state first, can declare anything
+  getInitialState: function(){//initialize the state first, can declare anything, 1st step
     return {
       products: []
     }
   },
 
-  loadProductsFromServer: function() { //getting data from server
+  loadProductsFromServer: function() { //getting data from server, 2nd step
     var self = this;
     $.ajax({
       url: this.props.url,
       method: 'GET'
     }).done(function(data){
-      this.setState({
-        products: data
+      self.setState({
+        products: data//updates array with our data
       })
     }.bind(this));
   },
@@ -25,7 +25,7 @@ var ProductTable = React.createClass({
     url: React.PropTypes.string.isRequired,
   },
 
-  componentDidMount: function() {
+  componentDidMount: function() {//updates with current data, 3rd step 
     this.loadProductsFromServer();
   },
 
@@ -37,7 +37,8 @@ var ProductTable = React.createClass({
       )
   }
 });
-
+ //this.props. = always look at my direct parent, not in the same componenet 
+ //state = look within the local scope getInitialState; states can be born & updated
 
 {/* 
 Filter through products and map only products in stock..
@@ -75,6 +76,7 @@ var  ProductList = React.createClass({
       })
     return(
       <div>
+      
         {productList}
       </div>
       )
